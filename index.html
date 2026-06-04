@@ -163,7 +163,7 @@ cartItems.addEventListener('click',event=>{const remove=event.target.closest('[d
   const shipping = shippingEstimate();
   const tip = getSelectedTip();
   const total = subtotal + shipping + tip;
-  const items = [...cart.values()].map(item => `- ${item.name} x${item.quantity} ($${(item.quantity * item.price).toFixed(2)})`).join('\n');
+  const items = [...cart.values()].map(item => `- ${item.name} · Size: ${item.size} · Sleeve length: ${item.cut || 'N/A'} · Qty: ${item.quantity} · $${(item.quantity * item.price).toFixed(2)}`).join('\n');
   const customerAddress = `${formData.get('address1')}\n${formData.get('city')}, ${formData.get('state')} ${formData.get('zip')}`;
 
   document.getElementById('orderSummary').value = `Customer name: ${formData.get('customerName')}\nEmail: ${formData.get('customerEmail')}\nAddress:\n${customerAddress}\n\nShipping method: ${formData.get('shippingMethod')}\n\nItems:\n${items}`;
